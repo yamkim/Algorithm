@@ -24,8 +24,9 @@ void pick(int n, vector<int>& picked, int pickCount) {
     } 
     // 책에서는 아래와 같이 몇번째 인덱스부터 시작할지 설정합니다. 
     // int smallest = picked.empty() ? 0 : picked.back() + 1;
+    // for (int next = smallest; next < N; ++next)
 
-    // n은 nCm의 n으로, 후보군 전체의 개수를 의미합니다.
+    // N은 nCm의 n으로, 후보군 전체의 개수를 의미합니다.
     for (int next = n; next < N; ++next) {
         // a가 뽑힌 경우, 
         picked.push_back(next);
