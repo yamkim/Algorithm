@@ -74,9 +74,9 @@ int cover(vector<vector<int> >& board) {
     for (int type = 0; type < 4; ++type) {
         // 일단 해당 타입으로 덮어본 후, 성공하면 카운트를 증가시킵니다.
         if (set(board, y, x, type, 1)) {
-            ret += cover(board);
             // board의 변화를 실시간으로 봅니다.
-            // showBoard(board);
+            showBoard(board);
+            ret += cover(board);
         }
         // 만약, 실패한다면, 새로운 타입으로 테스트 하기 위해
         // 현재 타입의 블록을 제거합니다. 
