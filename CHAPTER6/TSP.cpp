@@ -10,13 +10,17 @@ int N;
 #define MAX_N 8
 double dist[MAX_N][MAX_N];
 
+void showPath(vector<int>& path, double currentLength) {
+    cout << "경로 결과 =====================" << endl;
+    for (int i = 0; i < N - 1; ++i)
+        cout << path[i] << " -> ";
+    cout << path[N - 1] << endl;
+    cout << "length: " << currentLength << endl;
+}
+
 double shortestPath(vector<int>& path, vector<bool>& visited, double currentLength) {
     if (path.size() == N){
-        cout << "경로 결과 =====================" << endl;
-        for (int i = 0; i < N - 1; ++i)
-            cout << path[i] << " -> ";
-        cout << path[N - 1] << endl;
-        // 모두 방문 후에는 0번 도시로 다시 돌아와야합니다.
+        showPath(path, currentLength);
         return currentLength;
     } 
 
@@ -29,7 +33,6 @@ double shortestPath(vector<int>& path, vector<bool>& visited, double currentLeng
         path.push_back(next);
 
         double cand = shortestPath(path, visited, currentLength + dist[here][next]);
-
         ret = min(ret, cand);
 
         visited[next] = false;
@@ -48,6 +51,7 @@ int main(void) {
 
     vector<int> path;
     vector<bool> visited(N, false);
+    // 알고리즘 내부에서 pop.back()을 사용하여 이전 경로를 확인하므로, 미리 출발도시를 넣어줘야합니다.
     for (int i = 0; i < N; ++i) {
         path.push_back(i);
         visited[i] = true;
