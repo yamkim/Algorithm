@@ -13,12 +13,13 @@ int cache[30][30];
 int binoMemoization(int n, int r) {
     if (r == 0 || n == r) return 1;
 
-    if (cache[n][r] != -1)
-        return cache[n][r];
+    int& ret = cache[n][r];
+    if (ret != -1) return ret;
+
     cout << n << ", " << r << endl;
     // 처음으로 계산하는 시점에서 cache에 계산 값을 저장해두고, 저장된 값이 있다면 이를 사용합니다.
-    cache[n][r] = binoMemoization(n - 1, r - 1) + binoMemoization(n - 1, r);
-    return cache[n][r];
+    ret = binoMemoization(n - 1, r - 1) + binoMemoization(n - 1, r);
+    return ret;
 }
 
 int main(void) {
