@@ -6,12 +6,10 @@ using namespace std;
 #define MAX_SIZE 100
 
 int N, S[MAX_SIZE];
-int cache[MAX_SIZE];
+int cache[MAX_SIZE + 1];
 
 // S[0]을 시작점으로 고정하는 경우
 // int solve(int start) {
-//     if (start == N) return 0;
-
 //     int& ret = cache[start];
 //     if (ret != -1) {
 //         cout << "repeated case: " << start << endl;
@@ -26,8 +24,6 @@ int cache[MAX_SIZE];
 // }
 
 int solve(int start) {
-    if (start == N) return 0;
-
     int& ret = cache[start + 1];
     if (ret != -1) {
         cout << "repeated case: " << start << endl;
