@@ -8,9 +8,9 @@ int N, path[MAX_SIZE][MAX_SIZE];
 int cache[MAX_SIZE][MAX_SIZE];
 
 int solve(int y, int x) {
+    int& ret = cache[y][x];
     if (y == N - 1) return path[y][x];
 
-    int& ret = cache[y][x];
     if (ret != -1) {
         cout << "repeated case: (" << y << ", " << x << ")" << endl;
         return ret;
