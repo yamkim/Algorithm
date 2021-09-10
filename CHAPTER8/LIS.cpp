@@ -44,6 +44,7 @@ int main(void) {
     for (int i = 0; i < N; ++i)
         cin >> S[i];
     // -1일 때, 없는 요소임에도 ret을 기본적으로 1로 설정했기 때문입니다.
+    // cout << solve(0) << endl;
     cout << solve(-1) - 1 << endl; 
 
 }
